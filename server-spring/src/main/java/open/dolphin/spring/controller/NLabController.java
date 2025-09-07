@@ -1,7 +1,6 @@
 package open.dolphin.spring.controller;
 
-import open.dolphin.infomodel.NLaboModule;
-import open.dolphin.infomodel.PatientLiteModel;
+import open.dolphin.spring.model.entity.*;
 import open.dolphin.spring.service.NLabService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

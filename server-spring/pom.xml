@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -61,19 +60,30 @@
             <version>2.16.1</version>
         </dependency>
 
-        <!-- Common module dependency -->
         <dependency>
-            <groupId>opendolphin-modified</groupId>
-            <artifactId>opendolphin-common</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.8.Final</version>
+            <scope>provided</scope>
         </dependency>
-
-        <!-- Server module dependency for AccountSummary -->
         <dependency>
-            <groupId>opendolphin-modified</groupId>
-            <artifactId>opendolphin-server</artifactId>
-            <version>${project.version}</version>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Velocity for template processing -->

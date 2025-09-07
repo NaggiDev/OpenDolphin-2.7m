@@ -1,6 +1,6 @@
 package open.dolphin.spring.controller;
 
-import open.dolphin.infomodel.LetterModule;
+import open.dolphin.spring.model.entity.LetterModule;
 import open.dolphin.spring.service.LetterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
 package open.dolphin.spring.controller;
 
-import open.dolphin.infomodel.*;
+import open.dolphin.spring.model.entity.*;
 import open.dolphin.spring.service.StampService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

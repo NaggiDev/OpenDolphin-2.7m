@@ -1,6 +1,6 @@
 package open.dolphin.spring.service;
 
-import open.dolphin.infomodel.AppointmentModel;
+import open.dolphin.spring.model.entity.AppointmentModel;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

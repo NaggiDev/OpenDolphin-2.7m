@@ -1,7 +1,6 @@
 package open.dolphin.spring.controller;
 
-import open.dolphin.infomodel.ChartEventModel;
-import open.dolphin.infomodel.PatientVisitModel;
+import open.dolphin.spring.model.entity.*;
 import open.dolphin.spring.service.ChartEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

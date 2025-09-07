@@ -1,6 +1,6 @@
 package open.dolphin.spring.service;
 
-import open.dolphin.infomodel.DocumentModel;
+import open.dolphin.spring.model.entity.DocumentModel;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
 

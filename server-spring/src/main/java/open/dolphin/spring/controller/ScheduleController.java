@@ -1,6 +1,6 @@
 package open.dolphin.spring.controller;
 
-import open.dolphin.infomodel.PatientVisitModel;
+import open.dolphin.spring.model.entity.PatientVisitModel;
 import open.dolphin.spring.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

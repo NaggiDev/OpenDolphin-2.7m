@@ -1,7 +1,6 @@
 package open.dolphin.spring.controller;
 
-import open.dolphin.infomodel.PatientModel;
-import open.dolphin.infomodel.VitalModel;
+import open.dolphin.spring.model.entity.*;
 import open.dolphin.spring.service.VitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package open.dolphin.spring.service;
 
-import open.dolphin.infomodel.*;
-import open.dolphin.session.AccountSummary;
+import open.dolphin.spring.model.entity.*;
+import open.dolphin.spring.session.AccountSummary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

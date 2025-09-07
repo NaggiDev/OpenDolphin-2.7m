@@ -1,8 +1,6 @@
 package open.dolphin.spring.controller;
 
-import open.dolphin.infomodel.ActivityModel;
-import open.dolphin.infomodel.RoleModel;
-import open.dolphin.infomodel.UserModel;
+import open.dolphin.spring.model.entity.*;
 import open.dolphin.spring.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

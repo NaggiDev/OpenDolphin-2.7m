@@ -1,6 +1,6 @@
 package open.dolphin.spring.service;
 
-import open.dolphin.infomodel.ActivityModel;
+import open.dolphin.spring.model.entity.ActivityModel;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;

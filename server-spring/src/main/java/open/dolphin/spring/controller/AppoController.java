@@ -1,6 +1,6 @@
 package open.dolphin.spring.controller;
 
-import open.dolphin.infomodel.AppointmentModel;
+import open.dolphin.spring.model.entity.AppointmentModel;
 import open.dolphin.spring.service.AppoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

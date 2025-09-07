@@ -1,6 +1,6 @@
 package open.dolphin.spring.service;
 
-import open.dolphin.infomodel.*;
+import open.dolphin.spring.model.entity.*;
 import open.dolphin.spring.service.ClaimSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
