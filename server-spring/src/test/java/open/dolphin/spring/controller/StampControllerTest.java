@@ -1,5 +1,6 @@
 package open.dolphin.spring.controller;
 
+import open.dolphin.infomodel.StampModel;
 import open.dolphin.spring.service.StampService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -153,7 +154,7 @@ class StampControllerTest {
     @Test
     @WithMockUser(username = "admin", roles = {"USER"})
     void putStamp_shouldReturnStampId() throws Exception {
-        when(stampService.putStamp(any())).thenReturn("stamp456");
+        when(stampService.putStamp(any(StampModel.class))).thenReturn("stamp456");
 
         mockMvc.perform(put("/stamp/id")
                 .contentType(MediaType.APPLICATION_JSON)

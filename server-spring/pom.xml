@@ -68,6 +68,14 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- Server module dependency for AccountSummary -->
+        <dependency>
+            <groupId>opendolphin-modified</groupId>
+            <artifactId>opendolphin-server</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
         <!-- Velocity for template processing -->
         <dependency>
             <groupId>org.apache.velocity</groupId>
