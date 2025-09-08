@@ -81,7 +81,7 @@ public class ClaimItem extends InfoModel {
     private String endDate;// 終了日
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         ClaimItem ret = new ClaimItem();
         ret.setClassCode(this.getClassCode());
         ret.setClassCodeSystem(this.getClassCodeSystem());

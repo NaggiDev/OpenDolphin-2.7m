@@ -23,6 +23,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import open.dolphin.spring.model.core.InfoModel;
+import open.dolphin.spring.model.domain.medication.ClaimItem;
 
 /**
  * ORCA の tbl_inputset エンティティクラス。

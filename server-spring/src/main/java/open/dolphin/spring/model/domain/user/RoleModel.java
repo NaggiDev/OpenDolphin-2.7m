@@ -36,12 +36,4 @@ public class RoleModel extends InfoModel {
     @ManyToOne
     @JoinColumn(name = "c_user", nullable = false)
     private UserModel user;
-
-    public UserModel getUserModel() {
-        return user;
-    }
-
-    public void setUserModel(UserModel user) {
-        this.user = user;
-    }
 }

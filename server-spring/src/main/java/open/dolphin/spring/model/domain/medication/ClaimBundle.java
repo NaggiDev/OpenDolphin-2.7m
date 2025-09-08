@@ -83,7 +83,7 @@ public class ClaimBundle extends InfoModel {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         ClaimBundle ret = new ClaimBundle();
         ret.setAdmin(this.getAdmin());
         ret.setAdminCode(this.getAdminCode());

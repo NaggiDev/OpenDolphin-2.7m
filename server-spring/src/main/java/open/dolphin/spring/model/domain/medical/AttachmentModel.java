@@ -51,7 +51,7 @@ public class AttachmentModel extends KarteEntryBean {
     private String location;
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         AttachmentModel ret = new AttachmentModel();
         ret.setConfirmed(this.getConfirmed());
         ret.setEnded(this.getEnded());

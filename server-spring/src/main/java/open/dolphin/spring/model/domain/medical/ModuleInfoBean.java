@@ -22,9 +22,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import open.dolphin.spring.model.core.IInfoModel;
 import open.dolphin.spring.model.core.InfoModel;
 import open.dolphin.spring.model.core.ModelUtils;
-import open.dolphin.spring.model.entity.StampInfo;
+import open.dolphin.spring.model.core.StampInfo;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -235,7 +236,7 @@ public class ModuleInfoBean extends InfoModel implements StampInfo, Comparable {
     @Override
     public String toString() {
         // 病名でエイリアスがあればそれを返す
-        if (this.entity.equals(StampInfo.ENTITY_DIAGNOSIS)) {
+        if (this.entity.equals(IInfoModel.ENTITY_DIAGNOSIS)) {
             String alias = ModelUtils.getDiagnosisAlias(name);
             return alias != null ? alias : name;
         }

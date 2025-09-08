@@ -32,7 +32,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+// @Builder
 public class BundleDolphin extends ClaimBundle {
 
     private String orderName;
@@ -171,7 +171,7 @@ public class BundleDolphin extends ClaimBundle {
     // s.oh$
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         BundleDolphin ret = new BundleDolphin();
         ret.setAdmin(this.getAdmin());
         ret.setAdminCode(this.getAdminCode());

@@ -5,12 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import open.dolphin.spring.model.core.KarteEntryBean;
-import open.dolphin.spring.model.domain.medical.DocInfoModel;
-import open.dolphin.spring.model.entity.ModuleModel;
-import open.dolphin.spring.model.entity.SchemaModel;
-import open.dolphin.spring.model.entity.AttachmentModel;
-import open.dolphin.spring.model.entity.ModuleInfoBean;
-import open.dolphin.spring.model.entity.BundleDolphin;
+import open.dolphin.spring.model.domain.medication.BundleDolphin;
 import open.dolphin.spring.model.core.IInfoModel;
 
 import javax.persistence.*;
@@ -312,7 +307,7 @@ public class DocumentModel extends KarteEntryBean {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         DocumentModel ret = new DocumentModel();
         ret.setConfirmed(this.getConfirmed());
         ret.setDocInfoModel((DocInfoModel) this.getDocInfoModel().clone());

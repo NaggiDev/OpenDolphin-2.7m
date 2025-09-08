@@ -14,6 +14,8 @@ import java.util.List;
 import open.dolphin.spring.model.domain.medical.AttachmentModel;
 import open.dolphin.spring.model.domain.medical.ModuleModel;
 import open.dolphin.spring.model.domain.medical.SchemaModel;
+import open.dolphin.spring.model.domain.medication.BundleDolphin;
+import open.dolphin.spring.model.domain.medication.BundleMed;
 
 /**
  * InfoModel

@@ -5,8 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import open.dolphin.spring.model.core.KarteEntryBean;
+import open.dolphin.spring.model.core.Stamp;
 import open.dolphin.spring.model.core.IInfoModel;
 import open.dolphin.spring.model.domain.medical.ModuleInfoBean;
+import open.dolphin.spring.model.domain.medical.DocumentModel;
 import open.dolphin.spring.model.domain.medication.BundleDolphin;
 import open.dolphin.spring.model.domain.medication.BundleMed;
 import open.dolphin.spring.model.dto.ProgressCourse;
@@ -119,7 +121,7 @@ public class ModuleModel extends KarteEntryBean
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         ModuleModel ret = new ModuleModel();
         ret.setConfirmed(this.getConfirmed());
         ret.setEnded(this.getEnded());

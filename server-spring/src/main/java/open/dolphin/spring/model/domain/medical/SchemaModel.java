@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import open.dolphin.spring.model.core.KarteEntryBean;
 import open.dolphin.spring.model.core.IInfoModel;
-import open.dolphin.spring.model.entity.ExtRefModel;
 
 import javax.persistence.*;
 import javax.swing.ImageIcon;
@@ -127,7 +126,7 @@ public class SchemaModel extends KarteEntryBean {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         SchemaModel ret = new SchemaModel();
         ret.setConfirmed(this.getConfirmed());
         ret.setEnded(this.getEnded());

@@ -23,6 +23,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import open.dolphin.spring.model.core.InfoModel;
+import open.dolphin.spring.model.domain.medical.ModuleInfoBean;
+import open.dolphin.spring.model.domain.medication.BundleMed;
 
 import java.util.ArrayList;
 

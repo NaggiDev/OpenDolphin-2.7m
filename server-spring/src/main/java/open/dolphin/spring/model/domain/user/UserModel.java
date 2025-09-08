@@ -68,14 +68,6 @@ public class UserModel extends InfoModel {
     @JoinColumn(name = "facility_id", nullable = false)
     private FacilityModel facility;
 
-    public FacilityModel getFacilityModel() {
-        return facility;
-    }
-
-    public void setFacilityModel(FacilityModel facility) {
-        this.facility = facility;
-    }
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<RoleModel> roles;
 

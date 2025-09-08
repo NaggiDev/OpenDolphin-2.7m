@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import open.dolphin.spring.model.core.IInfoModel;
 import open.dolphin.spring.model.core.InfoModel;
 import open.dolphin.spring.model.domain.medical.ModuleModel;
 import open.dolphin.spring.model.domain.medical.ModuleInfoBean;

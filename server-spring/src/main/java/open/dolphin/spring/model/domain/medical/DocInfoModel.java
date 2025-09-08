@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import open.dolphin.spring.model.core.InfoModel;
-import open.dolphin.spring.model.entity.AccessRightModel;
+import open.dolphin.spring.model.domain.facility.AccessRightModel;
 import open.dolphin.spring.model.domain.insurance.PVTHealthInsuranceModel;
 
 import javax.persistence.*;
@@ -354,7 +354,7 @@ public class DocInfoModel extends InfoModel
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         DocInfoModel ret = new DocInfoModel();
         // ret.setAccessRights(this.getAccessRights());
         ret.setConfirmDate(this.getConfirmDate());

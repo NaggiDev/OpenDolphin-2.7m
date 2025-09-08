@@ -3,6 +3,7 @@ package open.dolphin.spring.model.integration.phr;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**

@@ -21,7 +21,7 @@ public class ProgressCourse extends InfoModel {
     String freeText;
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         ProgressCourse ret = new ProgressCourse();
         ret.setFreeText(this.getFreeText());
         return ret;

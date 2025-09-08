@@ -83,7 +83,7 @@ public class ExtRefModel extends InfoModel {
     // -----------------------------------
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         ExtRefModel ret = new ExtRefModel();
         ret.setBucket(this.getBucket());
         ret.setContentType(this.getContentType());

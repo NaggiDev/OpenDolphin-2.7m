@@ -30,9 +30,9 @@ import lombok.NoArgsConstructor;
  * @author Minagawa,Kazushi
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+// @NoArgsConstructor
+// @AllArgsConstructor
+// @Builder
 public class BundleMed extends BundleDolphin {
 
     public String getAdminDisplayString() {
@@ -169,7 +169,7 @@ public class BundleMed extends BundleDolphin {
     // s.oh$
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         BundleMed ret = new BundleMed();
         ret.setAdmin(this.getAdmin());
         ret.setAdminCode(this.getAdminCode());

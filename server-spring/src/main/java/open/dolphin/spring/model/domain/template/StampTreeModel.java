@@ -130,7 +130,7 @@ public class StampTreeModel extends InfoModel implements IStampTreeModel {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         StampTreeModel ret = new StampTreeModel();
         ret.setName("個人用");
         ret.setDescription("個人用のスタンプセットです");
