@@ -1,10 +1,10 @@
 package open.dolphin.spring.model.converter;
 
 import java.util.Date;
-import open.dolphin.spring.model.entity.AppointmentModel;
-import open.dolphin.spring.model.entity.IInfoModel;
-import open.dolphin.spring.model.entity.KarteBean;
-import open.dolphin.spring.model.entity.UserModel;
+import open.dolphin.spring.model.domain.appointment.AppointmentModel;
+import open.dolphin.spring.model.core.IInfoModel;
+import open.dolphin.spring.model.domain.patient.KarteBean;
+import open.dolphin.spring.model.domain.user.UserModel;
 
 /**
  *

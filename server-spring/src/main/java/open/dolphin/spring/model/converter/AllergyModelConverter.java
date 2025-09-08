@@ -1,7 +1,7 @@
 package open.dolphin.spring.model.converter;
 
-import open.dolphin.spring.model.entity.AllergyModel;
-import open.dolphin.spring.model.entity.IInfoModel;
+import open.dolphin.spring.model.domain.medical.diagnosis.AllergyModel;
+import open.dolphin.spring.model.core.IInfoModel;
 
 /**
  *

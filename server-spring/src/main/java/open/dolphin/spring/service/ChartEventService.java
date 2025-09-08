@@ -1,6 +1,8 @@
 package open.dolphin.spring.service;
 
-import open.dolphin.spring.model.entity.*;
+import open.dolphin.spring.model.domain.appointment.ChartEventModel;
+import open.dolphin.spring.model.domain.patient.PatientModel;
+import open.dolphin.spring.model.domain.patient.PatientVisitModel;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

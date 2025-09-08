@@ -1,6 +1,14 @@
 package open.dolphin.spring.service;
 
-import open.dolphin.spring.model.entity.*;
+import open.dolphin.spring.model.domain.patient.PatientModel;
+import open.dolphin.spring.model.domain.patient.PatientVisitModel;
+import open.dolphin.spring.model.domain.appointment.ChartEventModel;
+import open.dolphin.spring.model.domain.insurance.HealthInsuranceModel;
+import open.dolphin.spring.model.domain.medical.DocumentModel;
+import open.dolphin.spring.model.domain.medical.diagnosis.RegisteredDiagnosisModel;
+import open.dolphin.spring.model.domain.patient.KarteBean;
+import open.dolphin.spring.service.ChartEventService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,23 +61,23 @@ public class PatientService {
         // 後方一致検索を行う
         if (ret.isEmpty()) {
             ret = em.createQuery(QUERY_PATIENT_BY_NAME)
-                .setParameter(FID, fid)
-                .setParameter(NAME, PERCENT + name)
-                .getResultList();
+                    .setParameter(FID, fid)
+                    .setParameter(NAME, PERCENT + name)
+                    .getResultList();
         }
 
         // 施設患者一括表示機能
         if (ret.isEmpty()) {
             ret = em.createQuery(QUERY_PATIENT_BY_APPMEMO)
-                .setParameter(FID, fid)
-                .setParameter(APPMEMO, name + PERCENT)
-                .getResultList();
+                    .setParameter(FID, fid)
+                    .setParameter(APPMEMO, name + PERCENT)
+                    .getResultList();
         }
         if (ret.isEmpty()) {
             ret = em.createQuery(QUERY_PATIENT_BY_APPMEMO)
-                .setParameter(FID, fid)
-                .setParameter(APPMEMO, PERCENT + name)
-                .getResultList();
+                    .setParameter(FID, fid)
+                    .setParameter(APPMEMO, PERCENT + name)
+                    .getResultList();
         }
 
         // 患者の健康保険を取得する
@@ -85,29 +93,29 @@ public class PatientService {
 
     public List<PatientModel> getPatientsByKana(String fid, String name) {
         List<PatientModel> ret = em.createQuery(QUERY_PATIENT_BY_KANA)
-            .setParameter(FID, fid)
-            .setParameter(NAME, name + PERCENT)
-            .getResultList();
+                .setParameter(FID, fid)
+                .setParameter(NAME, name + PERCENT)
+                .getResultList();
 
         if (ret.isEmpty()) {
             ret = em.createQuery(QUERY_PATIENT_BY_KANA)
-                .setParameter(FID, fid)
-                .setParameter(NAME, PERCENT + name)
-                .getResultList();
+                    .setParameter(FID, fid)
+                    .setParameter(NAME, PERCENT + name)
+                    .getResultList();
         }
 
         // 施設患者一括表示機能
         if (ret.isEmpty()) {
             ret = em.createQuery(QUERY_PATIENT_BY_APPMEMO)
-                .setParameter(FID, fid)
-                .setParameter(APPMEMO, name + PERCENT)
-                .getResultList();
+                    .setParameter(FID, fid)
+                    .setParameter(APPMEMO, name + PERCENT)
+                    .getResultList();
         }
         if (ret.isEmpty()) {
             ret = em.createQuery(QUERY_PATIENT_BY_APPMEMO)
-                .setParameter(FID, fid)
-                .setParameter(APPMEMO, PERCENT + name)
-                .getResultList();
+                    .setParameter(FID, fid)
+                    .setParameter(APPMEMO, PERCENT + name)
+                    .getResultList();
         }
 
         // 患者の健康保険を取得する
@@ -123,22 +131,22 @@ public class PatientService {
 
     public List<PatientModel> getPatientsByDigit(String fid, String digit) {
         List<PatientModel> ret = em.createQuery(QUERY_PATIENT_BY_FID_PID)
-            .setParameter(FID, fid)
-            .setParameter(PID, digit + PERCENT)
-            .getResultList();
+                .setParameter(FID, fid)
+                .setParameter(PID, digit + PERCENT)
+                .getResultList();
 
         if (ret.isEmpty()) {
             ret = em.createQuery(QUERY_PATIENT_BY_TELEPHONE)
-                .setParameter(FID, fid)
-                .setParameter(NUMBER, digit + PERCENT)
-                .getResultList();
+                    .setParameter(FID, fid)
+                    .setParameter(NUMBER, digit + PERCENT)
+                    .getResultList();
         }
 
         if (ret.isEmpty()) {
             ret = em.createQuery(QUERY_PATIENT_BY_ZIPCODE)
-                .setParameter(FID, fid)
-                .setParameter(ZIPCODE, digit + PERCENT)
-                .getResultList();
+                    .setParameter(FID, fid)
+                    .setParameter(ZIPCODE, digit + PERCENT)
+                    .getResultList();
         }
 
         // 患者の健康保険を取得する
@@ -153,33 +161,31 @@ public class PatientService {
     }
 
     public List<PatientModel> getPatientsByPvtDate(String fid, String pvtDate) {
-        List<PatientVisitModel> list =
-                em.createQuery(QUERY_PATIENT_BY_PVTDATE)
-                  .setParameter(FID, fid)
-                  .setParameter(DATE, pvtDate + PERCENT)
-                  .getResultList();
+        List<PatientVisitModel> list = em.createQuery(QUERY_PATIENT_BY_PVTDATE)
+                .setParameter(FID, fid)
+                .setParameter(DATE, pvtDate + PERCENT)
+                .getResultList();
 
         List<PatientModel> ret = new ArrayList<>();
 
         for (PatientVisitModel pvt : list) {
             PatientModel patient = pvt.getPatientModel();
-            List<HealthInsuranceModel> insurances
-                        = (List<HealthInsuranceModel>)em.createQuery(QUERY_INSURANCE_BY_PATIENT_PK)
-                        .setParameter(PK, patient.getId()).getResultList();
-                patient.setHealthInsurances(insurances);
+            List<HealthInsuranceModel> insurances = (List<HealthInsuranceModel>) em
+                    .createQuery(QUERY_INSURANCE_BY_PATIENT_PK)
+                    .setParameter(PK, patient.getId()).getResultList();
+            patient.setHealthInsurances(insurances);
             ret.add(patient);
 
             // 患者の健康保険を取得する
             setHealthInsurances(patient);
-           patient.setPvtDate(pvt.getPvtDate());
+            patient.setPvtDate(pvt.getPvtDate());
         }
         return ret;
     }
 
     public PatientModel getPatientById(String fid, String pid) {
         // 患者レコードは FacilityId と patientId で複合キーになっている
-        PatientModel bean
-                = (PatientModel)em.createQuery(QUERY_PATIENT_BY_FID_PID)
+        PatientModel bean = (PatientModel) em.createQuery(QUERY_PATIENT_BY_FID_PID)
                 .setParameter(FID, fid)
                 .setParameter(PID, pid)
                 .getSingleResult();
@@ -194,13 +200,14 @@ public class PatientService {
     }
 
     public int countPatients(String facilityId) {
-        Long count = (Long)em.createQuery("select count(*) from PatientModel p where p.facilityId=:fid")
+        Long count = (Long) em.createQuery("select count(*) from PatientModel p where p.facilityId=:fid")
                 .setParameter("fid", facilityId).getSingleResult();
         return count.intValue();
     }
 
     public List<String> getAllPatientsWithKana(String facilityId, int firstResult, int maxResult) {
-        List<String> list = em.createQuery("select p.kanaName from PatientModel p where p.facilityId=:fid order by p.kanaName")
+        List<String> list = em
+                .createQuery("select p.kanaName from PatientModel p where p.facilityId=:fid order by p.kanaName")
                 .setParameter("fid", facilityId)
                 .setFirstResult(firstResult)
                 .setMaxResults(maxResult)
@@ -211,8 +218,8 @@ public class PatientService {
     public List<PatientModel> getTmpKarte(String facilityId) {
         List<PatientModel> ret = new ArrayList<>();
 
-        List<DocumentModel> list = (List<DocumentModel>)
-        em.createQuery("from DocumentModel d where d.karte.patient.facilityId=:fid and d.status='T'")
+        List<DocumentModel> list = (List<DocumentModel>) em
+                .createQuery("from DocumentModel d where d.karte.patient.facilityId=:fid and d.status='T'")
                 .setParameter("fid", facilityId)
                 .getResultList();
 
@@ -254,14 +261,14 @@ public class PatientService {
         for (PatientVisitModel pvt : pvtList) {
             if (pvt.getPatientModel().getId() == pm.getId()) {
                 List<HealthInsuranceModel> him = pvt.getPatientModel().getHealthInsurances();
-                if(pm.getHealthInsurances() == null) {
+                if (pm.getHealthInsurances() == null) {
                     pm.setHealthInsurances(him);
                 }
                 pvt.setPatientModel(pm);
-                 // クライアントに通知
+                // クライアントに通知
                 String uuid = eventService.getServerUUID();
                 ChartEventModel msg = new ChartEventModel(uuid);
-                msg.setPatientModel(pm);
+                msg.setPatient(pm);
                 msg.setFacilityId(fid);
                 msg.setEventType(ChartEventModel.PM_MERGE);
                 eventService.notifyEvent(msg);
@@ -270,14 +277,12 @@ public class PatientService {
     }
 
     private void setPvtDate(String fid, List<PatientModel> list) {
-        final String sql =
-                "from PatientVisitModel p where p.facilityId = :fid and p.patient.id = :patientPk "
+        final String sql = "from PatientVisitModel p where p.facilityId = :fid and p.patient.id = :patientPk "
                 + "and p.status != :status order by p.pvtDate desc";
 
         for (PatientModel patient : list) {
             try {
-                PatientVisitModel pvt = (PatientVisitModel)
-                        em.createQuery(sql)
+                PatientVisitModel pvt = (PatientVisitModel) em.createQuery(sql)
                         .setParameter("fid", fid)
                         .setParameter("patientPk", patient.getId())
                         .setParameter("status", -1)
@@ -291,11 +296,9 @@ public class PatientService {
     }
 
     public List<PatientModel> getPatientList(String fid, List<String> idList) {
-        final String sql
-                = "from PatientModel p where p.facilityId = :fid and p.patientId in (:ids)";
+        final String sql = "from PatientModel p where p.facilityId = :fid and p.patientId in (:ids)";
 
-        List<PatientModel> list = (List<PatientModel>)
-                em.createQuery(sql)
+        List<PatientModel> list = (List<PatientModel>) em.createQuery(sql)
                 .setParameter("fid", fid)
                 .setParameter("ids", idList)
                 .getResultList();
@@ -322,8 +325,7 @@ public class PatientService {
     }
 
     protected List<HealthInsuranceModel> getHealthInsurances(long pk) {
-        List<HealthInsuranceModel> ins =
-                em.createQuery(QUERY_INSURANCE_BY_PATIENT_PK)
+        List<HealthInsuranceModel> ins = em.createQuery(QUERY_INSURANCE_BY_PATIENT_PK)
                 .setParameter(PK, pk)
                 .getResultList();
         return ins;
@@ -331,7 +333,8 @@ public class PatientService {
 
     // 検索件数が1000件超過
     public Long getPatientCount(String facilityId, String patientId) {
-        Long ret = (Long)em.createQuery("select count(*) from PatientModel p where p.facilityId=:fid and p.patientId like :pid")
+        Long ret = (Long) em
+                .createQuery("select count(*) from PatientModel p where p.facilityId=:fid and p.patientId like :pid")
                 .setParameter("fid", facilityId)
                 .setParameter("pid", patientId + "%")
                 .getSingleResult();
@@ -341,8 +344,8 @@ public class PatientService {
     // 一括カルテPDF出力
     public List<PatientModel> getAllPatient(String fid) {
         List<PatientModel> ret = em.createQuery("from PatientModel p where p.facilityId=:fid")
-            .setParameter(FID, fid)
-            .getResultList();
+                .setParameter(FID, fid)
+                .getResultList();
 
         setHealthInsurances(ret);
 
@@ -355,37 +358,37 @@ public class PatientService {
 
         final String DIAGNOSIS = "[D]";
 
-        if(param.indexOf(DIAGNOSIS) == 0) {
+        if (param.indexOf(DIAGNOSIS) == 0) {
             String val = param.substring(param.indexOf(DIAGNOSIS) + DIAGNOSIS.length());
             List<RegisteredDiagnosisModel> list = null;
-            if(val.startsWith("*") && val.endsWith("*")) {
-                list = (List<RegisteredDiagnosisModel>)
-                       em.createQuery("from RegisteredDiagnosisModel d where d.diagnosis like :val and d.status='F'")
-                         .setParameter("val", PERCENT + val + PERCENT)
-                         .getResultList();
-            }else if(val.startsWith("*")) {
-                list = (List<RegisteredDiagnosisModel>)
-                       em.createQuery("from RegisteredDiagnosisModel d where d.diagnosis like :val and d.status='F'")
-                         .setParameter("val", PERCENT + val)
-                         .getResultList();
-            }else if(val.endsWith("*")) {
-                list = (List<RegisteredDiagnosisModel>)
-                       em.createQuery("from RegisteredDiagnosisModel d where d.diagnosis like :val and d.status='F'")
-                         .setParameter("val", val + PERCENT)
-                         .getResultList();
-            }else{
-                list = (List<RegisteredDiagnosisModel>)
-                       em.createQuery("from RegisteredDiagnosisModel d where d.diagnosis=:val and d.status='F'")
-                         .setParameter("val", val)
-                         .getResultList();
+            if (val.startsWith("*") && val.endsWith("*")) {
+                list = (List<RegisteredDiagnosisModel>) em
+                        .createQuery("from RegisteredDiagnosisModel d where d.diagnosis like :val and d.status='F'")
+                        .setParameter("val", PERCENT + val + PERCENT)
+                        .getResultList();
+            } else if (val.startsWith("*")) {
+                list = (List<RegisteredDiagnosisModel>) em
+                        .createQuery("from RegisteredDiagnosisModel d where d.diagnosis like :val and d.status='F'")
+                        .setParameter("val", PERCENT + val)
+                        .getResultList();
+            } else if (val.endsWith("*")) {
+                list = (List<RegisteredDiagnosisModel>) em
+                        .createQuery("from RegisteredDiagnosisModel d where d.diagnosis like :val and d.status='F'")
+                        .setParameter("val", val + PERCENT)
+                        .getResultList();
+            } else {
+                list = (List<RegisteredDiagnosisModel>) em
+                        .createQuery("from RegisteredDiagnosisModel d where d.diagnosis=:val and d.status='F'")
+                        .setParameter("val", val)
+                        .getResultList();
             }
             HashMap<String, String> map = new HashMap<>(10, 0.75f);
-            for(RegisteredDiagnosisModel rdm : list) {
-                KarteBean karte = (KarteBean)em.find(KarteBean.class, rdm.getKarte().getId());
-                if(karte != null && karte.getPatient() != null) {
-                    if(map.get(karte.getPatient().getPatientId()) != null) {
+            for (RegisteredDiagnosisModel rdm : list) {
+                KarteBean karte = (KarteBean) em.find(KarteBean.class, rdm.getKarte().getId());
+                if (karte != null && karte.getPatient() != null) {
+                    if (map.get(karte.getPatient().getPatientId()) != null) {
                         continue;
-                    }else{
+                    } else {
                         map.put(karte.getPatient().getPatientId(), "pid");
                     }
                     ret.add(karte.getPatient());

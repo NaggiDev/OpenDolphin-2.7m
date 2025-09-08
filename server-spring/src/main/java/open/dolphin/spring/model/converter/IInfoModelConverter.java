@@ -1,6 +1,6 @@
 package open.dolphin.spring.model.converter;
 
-import open.dolphin.spring.model.entity.IInfoModel;
+import open.dolphin.spring.model.core.IInfoModel;
 
 /**
  *
